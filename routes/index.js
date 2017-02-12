@@ -2,36 +2,46 @@ var express = require('express');
 var router = express.Router();
 const axios = require('axios');
 require('dotenv').config();
+const getLocation = require('./location');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  axios.get(`https://api.darksky.net/forecast/${process.env.weatherKey}/42.3601,-71.0589`)
+  axios.post(`https://www.googleapis.com/geolocation/v1/geolocate?key=${process.env.googleLocationKey}`)
+  .then((val) => {
+    console.log("LOCATION", val.data.location);
+    return axios.get(`https://api.darksky.net/forecast/${process.env.weatherKey}/${val.data.location.lat},${val.data.location.lng}`)
+  })
   .then((response) => {
-    // console.log('darksky response', response)
-    // console.log('darksky response')
     const temp = Math.round(response.data.currently.temperature);
     const summary = response.data.currently.summary;
-    // const response = response;
 
     res.render('index', {
       temp: temp,
       summary: summary,
       response: response
     });
-    // console.log('darksky response')
-  });
+  })
+  .catch((err) => console.log(err))
+  //res.send();
+  //getLocation().then(val => {console.log(val)});
+  /*
 
-  axios.post(`https://www.googleapis.com/geolocation/v1/geolocate?key=${process.env.googleLocationKey}`)
+  .then((val) => {
+    axios.get(`https://api.darksky.net/forecast/${process.env.weatherKey}/${location.lat},${location.lng}`)
   .then((response) => {
-    console.log('google response', response)
-    const lat = response.location.lat;
-    const lng = response.location.lng;
+    const temp = Math.round(response.data.currently.temperature);
+    const summary = response.data.currently.summary;
 
     res.render('index', {
-      lat: lat,
-      lng: lng
+      temp: temp,
+      summary: summary,
+      response: response
     });
-  });
+  })
+  .catch((err) => console.log(err))
+  })
+  */
 });
 
 module.exports = router;
+
