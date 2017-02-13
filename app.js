@@ -6,7 +6,6 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
 const index = require('./routes/index');
-const location = require('./routes/location');
 const env = require('dotenv').config();
 
 const app = express();
@@ -30,7 +29,6 @@ app.use(require('node-sass-middleware')({
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/location', location);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
