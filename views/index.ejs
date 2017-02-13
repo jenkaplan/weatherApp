@@ -1,11 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
   </head>
   <body>
-    <h1>Temp: <%= temp %> F </h1>
-    <p> <%= summary %></p>
+  </br>
+  </br>
+  <h1>What's up with the weather?</h1>
+  </br>
+    <div class="currentTemp">
+      <div class="currentTemp ghost">Current Temperature</div>
+      <div class="currentTemp" id="currentTemp"><%= temp %></div>
+    </div>
+  </br>
+    <div class="weatherDescription ghost">Description
+      <div class="weatherDescription" id="weatherDescription"><%= summary %></div>
+    </div>
   </body>
 </html>
