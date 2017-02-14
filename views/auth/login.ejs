@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="stylesheets/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+</head>
+<body>
+    <h1>What's up with the weather?</h1>
+    <main>
+      <div class="container">
+        <form action="/auth/login" method="post">
+          <div>
+            <label>Username:</label>
+            <input type="text" name="username"/>
+          </div>
+          <div>
+            <label>Password:</label>
+            <input type="password" name="password"/>
+          </div>
+          <div>
+            <input type="submit" value="Log In"/>
+          </div>
+        </form>
+      </div>
+    </main>
+    <% include ../partials/footer.ejs %>
+  </body>
+</html>
