@@ -6,8 +6,8 @@ require('dotenv').config();
 /* GET home page. */
 router.get('/', function(req, res, next) {
   axios.post(`https://www.googleapis.com/geolocation/v1/geolocate?key=${process.env.googleLocationKey}`)
-    console.log(location.lat, location.lng)
   .then((val) => {
+    console.log(val.data.location.lat, val.data.location.lng)
     return axios.get(`https://api.darksky.net/forecast/${process.env.weatherKey}/${val.data.location.lat},${val.data.location.lng}`)
   })
   .then((response) => {
