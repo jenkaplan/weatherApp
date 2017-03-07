@@ -3,6 +3,9 @@ body {
   font-family: 'Poiret One', cursive;
   background: url('backgroundMobile.jpeg');
   background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 input {
@@ -29,7 +32,6 @@ button {
 #city, #minMax, #minTemp, #maxTemp, #currentTemp, #weatherDescription {
   font-size: 1.5em;
 }
-
 
 .minMax {
   display: flex;
